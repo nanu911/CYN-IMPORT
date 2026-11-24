@@ -9,13 +9,13 @@ window.SITE = {
   whatsapp: "5491168658567",
   email: "ventas@cynimport.com",
   ciudad: "Buenos Aires, Argentina",
-  horario: "Respondemos de lunes a sábado de 9 a 20 hs.",
+  horario: "Respondemos de lunes a sábado de 7 a 23 hs.",
 
   // Mensaje que le llega a tu WhatsApp. {producto} y {precio} se reemplazan solos.
   mensaje: "Hola! Me interesa este producto: {producto} ({precio}). ¿Está disponible?",
 
   // Barra superior (dejala vacía "" para ocultarla)
-  barra: "🚚 Envíos a todo el país · 💳 Consultá cuotas · 🛡️ Garantía en todos los productos",
+  barra: "🚚 Envíos x la zona · 💳 Consultá cuotas · 🛡️ Garantía en todos los productos",
 
   // Cartel "3 cuotas de $X sin interés" en cada producto. Poné 0 para ocultarlo.
   cuotas: 3,
@@ -23,9 +23,7 @@ window.SITE = {
   // Los 4 recuadros debajo del título principal
   beneficios: [
     { icono: "🚚", titulo: "Envíos a todo el país", detalle: "Coordinamos por WhatsApp" },
-    { icono: "💳", titulo: "Cuotas disponibles", detalle: "Consultá tarjetas" },
     { icono: "🛡️", titulo: "Garantía", detalle: "Cambios y devoluciones" },
-    { icono: "🏦", titulo: "Descuento por transferencia", detalle: "Consultá el porcentaje" }
   ],
 
   // Preguntas frecuentes (agregá, quitá o cambiá las que quieras)
