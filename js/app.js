@@ -3,7 +3,6 @@
   let products = [];
   let cat = "Todos";
 
-  // Datos generales desde config.js
   $("year").textContent = new Date().getFullYear();
   $("site-name").textContent = SITE.name;
   $("tagline").textContent = SITE.tagline;
@@ -15,7 +14,7 @@
     if ($(id)) $(id).href = waGeneral;
   });
 
-  // Menú hamburguesa en celular
+  // Menú celular
   if ($("burger") && $("nav")) {
     $("burger").addEventListener("click", () => $("nav").classList.toggle("open"));
     $("nav").addEventListener("click", e => {
@@ -29,7 +28,7 @@
       .map(e => "<span>" + e + "</span>").join("");
   }
 
-  // Beneficios
+  // Bloque de Beneficios
   if ($("benefits") && Array.isArray(SITE.beneficios)) {
     $("benefits").innerHTML = SITE.beneficios.map(b =>
       '<div class="benefit-card"><div class="ico">' + esc(b.icono) +
@@ -37,14 +36,14 @@
     ).join("");
   }
 
-  // Preguntas frecuentes
+  // Bloque de Preguntas Frecuentes
   if ($("faq-list") && Array.isArray(SITE.faq)) {
     $("faq-list").innerHTML = SITE.faq.map(f =>
       '<details><summary>' + esc(f.p) + '</summary><p>' + esc(f.r) + '</p></details>'
     ).join("");
   }
 
-  // Lista de contacto
+  // Bloque de Contacto
   if ($("contact-list")) {
     const items = [];
     if (SITE.ciudad) items.push("📍 " + esc(SITE.ciudad));
@@ -67,17 +66,16 @@
     const cuotas = SITE.cuotas > 1 && p.price > 0
       ? '<div class="cuotas-tag">' + SITE.cuotas + " cuotas sin interés de " + money(Math.round(p.price / SITE.cuotas)) + "</div>" : "";
     const btn = p.available !== false
-      ? '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + esc(waLinkProduct(p)) + '">💬 Consultar por WhatsApp</a>'
+      ? '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + esc(waLinkProduct(p)) + '">💬 Consultar</a>'
       : '<span class="btn btn-off">Sin stock</span>';
 
-    return '<article class="card"><div class="card-img" style="background:linear-gradient(135deg,' + color + ',#091326)">' +
+    return '<article class="card"><div class="card-img" style="background:linear-gradient(135deg,' + color + ',#0f172a)">' +
       off + star + visual + '</div><div class="card-body"><span class="cat">' + esc(p.category) + '</span><h3>' + esc(p.name) +
       '</h3><p class="desc">' + esc(p.description) + '</p><div class="price"><strong>' + money(p.price) + '</strong>' + old +
       '</div>' + cuotas + btn + '</div></article>';
   }
 
   function renderSections() {
-    // Categorías
     const catsMap = {};
     products.forEach(p => {
       if (!p.category) return;
@@ -93,14 +91,12 @@
       ).join("");
     }
 
-    // Destacados
     const feat = products.filter(p => p.featured && p.available !== false);
     if (feat.length && $("sec-featured")) {
       $("sec-featured").hidden = false;
       $("featured").innerHTML = feat.slice(0, 4).map(card).join("");
     }
 
-    // Ofertas
     const offs = products.filter(p => p.old_price && p.old_price > p.price && p.available !== false);
     if (offs.length && $("sec-promo") && $("ofertas")) {
       $("sec-promo").hidden = false;
@@ -133,7 +129,6 @@
     $("grid").innerHTML = list.length ? list.map(card).join("") : '<p class="empty">No encontramos productos con ese filtro.</p>';
   }
 
-  // Eventos
   $("chips").addEventListener("click", e => {
     const b = e.target.closest(".chip");
     if (!b) return;
