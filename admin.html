@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel | CYN IMPORT</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-in">
+      <a class="logo" href="./"><span>CYN</span> IMPORT <small style="font-size:13px;color:var(--muted);font-weight:600">· Panel</small></a>
+      <span style="flex:1"></span>
+      <a class="btn btn-ghost btn-small" href="./">← Ver tienda</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="admin-wrap">
+      <!-- Formulario -->
+      <section class="box">
+        <h2 id="form-title">Agregar producto</h2>
+        <form id="form" autocomplete="off">
+          <div class="preview" id="preview">📦</div>
+          <div class="field">
+            <label>Foto (opcional)</label>
+            <input type="file" id="file" accept="image/*">
+            <small>Se achica automáticamente. Si no subís foto se usa el emoji.</small>
+          </div>
+          <div class="field"><label>Nombre *</label><input id="name" required maxlength="80"></div>
+          <div class="field"><label>Descripción</label><textarea id="description" rows="3" maxlength="300"></textarea></div>
+          <div class="row2">
+            <div class="field"><label>Precio *</label><input id="price" type="number" min="0" step="1" required></div>
+            <div class="field"><label>Precio anterior</label><input id="old_price" type="number" min="0" step="1" placeholder="(opcional)"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Categoría *</label><input id="category" list="cats" required maxlength="40"><datalist id="cats"></datalist></div>
+            <div class="field"><label>Emoji</label><input id="emoji" maxlength="4" value="📦"></div>
+          </div>
+          <div class="field"><label>Color de fondo</label><input id="color" type="color" value="#1e3a8a" style="height:40px;padding:2px"></div>
+          <label class="check"><input type="checkbox" id="available" checked> Disponible</label>
+          <label class="check"><input type="checkbox" id="featured"> Destacado ⭐</label>
+          <div style="display:flex;gap:8px;margin-top:6px">
+            <button class="btn btn-primary" type="submit" id="save-btn">Guardar producto</button>
+            <button class="btn btn-ghost" type="button" id="cancel-btn" style="display:none">Cancelar</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Lista -->
+      <section>
+        <div class="toolbar">
+          <span class="status" id="status">Sin cambios</span>
+          <span style="flex:1"></span>
+          <button class="btn btn-accent btn-small" id="publish-btn">🚀 Publicar en GitHub</button>
+          <button class="btn btn-ghost btn-small" id="download-btn">⬇ Descargar products.json</button>
+          <button class="btn btn-ghost btn-small" id="import-btn">⬆ Importar</button>
+          <button class="btn btn-ghost btn-small" id="reset-btn" title="Descarta los cambios no publicados">↺ Descartar cambios</button>
+          <input type="file" id="import-file" accept="application/json" hidden>
+        </div>
+        <div class="box" style="margin-bottom:14px;font-size:14px;color:var(--muted)">
+          Los cambios se guardan en <b>este navegador</b> hasta que los publiques. La tienda se actualiza al <b>Publicar</b> (tarda ~1 minuto en verse).
+        </div>
+        <div class="plist" id="list"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Diálogo de publicación -->
+  <dialog id="dlg">
+    <h2 style="color:var(--navy);margin-bottom:6px">Publicar en GitHub</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">
+      Necesitás un <b>token de GitHub</b> con permiso de escritura sobre este repositorio (ver README, sección "Token").
+    </p>
+    <div class="row2">
+      <div class="field"><label>Usuario</label><input id="gh-owner"></div>
+      <div class="field"><label>Repositorio</label><input id="gh-repo"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Rama</label><input id="gh-branch" value="main"></div>
+      <div class="field"><label>Token</label><input id="gh-token" type="password" autocomplete="off"></div>
+    </div>
+    <label class="check"><input type="checkbox" id="gh-remember"> Recordar en este navegador (no recomendado en PC compartidas)</label>
+    <div class="msg" id="gh-msg"></div>
+    <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end">
+      <button class="btn btn-ghost" id="gh-cancel" type="button">Cerrar</button>
+      <button class="btn btn-primary" id="gh-go" type="button">Publicar</button>
+    </div>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
