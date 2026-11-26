@@ -6,7 +6,7 @@ window.SITE = {
 
   // Número con código de país y sin "+" ni espacios. Argentina: 549 + código de área + número.
   // Ejemplo: 5491122334455
-  whatsapp: "5491168658567",
+  whatsapp: "5491159495036",
   email: "ventas@cynimport.com",
   ciudad: "Buenos Aires, Argentina",
   horario: "Respondemos de lunes a sábado de 7 a 23 hs.",
