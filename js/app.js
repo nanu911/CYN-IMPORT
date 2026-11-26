@@ -2,6 +2,8 @@
   const $ = id => document.getElementById(id);
   let products = [];
   let cat = "Todos";
+  const PREFIX = "#producto-";
+  const detail = $("detail");
 
   $("year").textContent = new Date().getFullYear();
   $("site-name").textContent = SITE.name;
@@ -63,17 +65,77 @@
       ? '<img src="' + esc(img) + '" alt="' + esc(p.name) + '" loading="lazy">'
       : '<span class="emoji">' + esc(p.emoji || "📦") + "</span>";
     const old = p.old_price && p.old_price > p.price ? '<span class="old">' + money(p.old_price) + "</span>" : "";
-    const cuotas = SITE.cuotas > 1 && p.price > 0
-      ? '<div class="cuotas-tag">' + SITE.cuotas + " cuotas sin interés de " + money(Math.round(p.price / SITE.cuotas)) + "</div>" : "";
+    const href = PREFIX + encodeURIComponent(p.id);
     const btn = p.available !== false
       ? '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + esc(waLinkProduct(p)) + '">💬 Consultar</a>'
       : '<span class="btn btn-off">Sin stock</span>';
 
-    return '<article class="card"><div class="card-img" style="background:linear-gradient(135deg,' + color + ',#0f172a)">' +
-      off + star + visual + '</div><div class="card-body"><span class="cat">' + esc(p.category) + '</span><h3>' + esc(p.name) +
-      '</h3><p class="desc">' + esc(p.description) + '</p><div class="price"><strong>' + money(p.price) + '</strong>' + old +
-      '</div>' + cuotas + btn + '</div></article>';
+    return '<article class="card"><a class="card-img" data-detail href="' + esc(href) + '" aria-label="Ver detalles de ' + esc(p.name) +
+      '" style="background:linear-gradient(135deg,' + color + ',#0f172a)">' +
+      off + star + visual + '</a><div class="card-body"><span class="cat">' + esc(p.category) + '</span><h3><a data-detail href="' + esc(href) + '">' + esc(p.name) +
+      '</a></h3><p class="desc">' + esc(p.description) + '</p><div class="price"><strong>' + money(p.price) + '</strong>' + old +
+      '</div><div class="card-actions"><a class="btn btn-detail" data-detail href="' + esc(href) + '">Ver detalles</a>' + btn + '</div></div></article>';
   }
+
+  /* ---------- Detalle de producto ---------- */
+  function detailHtml(p) {
+    const img = safeImg(p.image);
+    const hasOld = p.old_price && p.old_price > p.price;
+    const visual = img
+      ? '<img src="' + esc(img) + '" alt="' + esc(p.name) + '">'
+      : '<span class="emoji">' + esc(p.emoji || "📦") + "</span>";
+    const bg = img ? "" : ' style="background:linear-gradient(135deg,' + safeColor(p.color) + ',#0f172a)"';
+    const recargo = Number(SITE.recargoTransferencia) || 0;
+    const transfer = Math.round(p.price * (1 + recargo / 100));
+    const btn = p.available !== false
+      ? '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + esc(waLinkProduct(p)) + '">💬 Consultar por WhatsApp</a>'
+      : '<span class="btn btn-off">Sin stock</span>';
+
+    return '<div class="detail-img"' + bg + '>' + visual + '</div><div class="detail-info">' +
+      '<span class="cat">' + esc(p.category) + '</span><h2 id="detail-name">' + esc(p.name) + '</h2>' +
+      '<div class="price"><strong>' + money(p.price) + '</strong>' +
+      (hasOld ? '<span class="old">' + money(p.old_price) + '</span>' : "") + '</div>' +
+      (p.description ? '<h3>Descripción</h3><p class="detail-desc">' + esc(p.description) + '</p>' : "") +
+      '<ul class="detail-extra">' +
+      '<li>💵 Efectivo: <strong>' + money(p.price) + '</strong></li>' +
+      '<li>🏦 Transferencia' + (recargo ? " (+" + recargo + "%)" : "") + ': <strong>' + money(transfer) + '</strong></li>' +
+      '<li>🚚 Envíos solo por zona, con costo mínimo adicional</li>' +
+      '<li>🏠 Retiro en domicilio a coordinar</li>' +
+      '</ul>' + btn + '</div>';
+  }
+
+  // Abre o cierra el detalle según la dirección (#producto-ID)
+  function syncDetail() {
+    const p = products.find(x => location.hash === PREFIX + encodeURIComponent(x.id));
+    if (!p) {
+      if (detail.open) detail.close();
+      return;
+    }
+    $("detail-body").innerHTML = detailHtml(p);
+    if (!detail.open) detail.showModal();
+    $("detail-body").scrollTop = 0;
+    document.documentElement.classList.add("modal-open");
+  }
+
+  document.addEventListener("click", e => {
+    const link = e.target.closest("a[data-detail]");
+    if (!link || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    e.preventDefault();
+    history.pushState({ detail: true }, "", link.getAttribute("href"));
+    syncDetail();
+  });
+
+  $("detail-close").addEventListener("click", () => detail.close());
+  // Clic fuera de la ventana
+  detail.addEventListener("click", e => { if (e.target === detail) detail.close(); });
+  detail.addEventListener("close", () => {
+    document.documentElement.classList.remove("modal-open");
+    if (!location.hash.startsWith(PREFIX)) return;
+    if (history.state && history.state.detail) history.back();
+    else history.replaceState(null, "", location.pathname + location.search);
+  });
+  // Botón "atrás" del navegador o del celular
+  window.addEventListener("popstate", syncDetail);
 
   function renderSections() {
     const catsMap = {};
@@ -164,6 +226,7 @@
       renderSections();
       renderChips();
       render();
+      syncDetail(); // por si entraron con el link directo a un producto
     })
     .catch(() => {
       $("grid").innerHTML = '<p class="empty">No se pudieron cargar los productos.</p>';
