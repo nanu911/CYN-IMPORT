@@ -285,7 +285,7 @@ img { max-width: 100%; display: block; }
 /* ---------- Beneficios ---------- */
 .benefits {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
   margin-top: 16px;
 }
@@ -544,12 +544,91 @@ img { max-width: 100%; display: block; }
   color: var(--muted);
   text-decoration: line-through;
 }
-.cuotas-tag {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--wa);
-  margin-bottom: 8px;
+.card h3 a:hover { text-decoration: underline; }
+.card-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+.btn-detail {
+  background: var(--surface);
+  color: var(--primary);
+  border: 1.5px solid var(--border);
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  border-radius: 11px;
 }
+.btn-detail:hover { border-color: var(--primary); }
+
+/* ---------- Detalle de producto ---------- */
+html.modal-open, html.modal-open body { overflow: hidden; }
+.detail {
+  width: min(940px, 100% - 24px);
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  border: 0;
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  color: var(--text);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.detail::backdrop { background: rgba(8, 20, 42, 0.72); }
+.detail-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.detail-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+}
+.detail-img {
+  display: grid;
+  place-items: center;
+  align-self: start;
+  position: sticky;
+  top: 0;
+  min-height: 360px;
+  background: #f7f9fc;
+}
+.detail-img img { width: 100%; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); object-fit: contain; }
+.detail-img .emoji { font-size: 110px; }
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 34px 30px 28px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.detail-info h2 { font-size: 24px; line-height: 1.2; color: var(--primary); padding-right: 30px; }
+.detail-info .price { margin: 0; }
+.detail-info .price strong { font-size: 30px; }
+.detail-info h3 { font-size: 14px; color: var(--primary); margin-top: 6px; }
+.detail-desc { font-size: 14.5px; color: var(--muted); white-space: pre-line; }
+.detail-extra {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin: 6px 0;
+  font-size: 13.5px;
+}
+.detail-info .btn { margin-top: 0; flex-shrink: 0; }
 
 /* ---------- FAQ ---------- */
 .faq { display: grid; gap: 10px; max-width: 860px; }
@@ -698,6 +777,7 @@ img { max-width: 100%; display: block; }
   .hero-cta .btn { width: 100%; }
 
   .benefits { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .benefit-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .benefit-card { flex-direction: column; text-align: center; padding: 14px 8px; gap: 8px; }
   .benefit-card .ico { width: 40px; height: 40px; font-size: 20px; }
   .benefit-card strong { font-size: 12.5px; }
@@ -732,7 +812,12 @@ img { max-width: 100%; display: block; }
   .price .old { font-size: 12px; }
   .badge { top: 8px; left: 8px; font-size: 10.5px; padding: 4px 8px; }
   .badge.star { right: 8px; left: auto; }
-  .btn-wa, .btn-off { padding: 10px 8px; font-size: 12.5px; }
+  .btn-wa, .btn-off, .btn-detail { padding: 10px 8px; font-size: 12.5px; }
+
+  .detail-body { grid-template-columns: 1fr; }
+  .detail-img { position: static; min-height: 240px; }
+  .detail-img img { max-height: 55vh; }
+  .detail-info { padding: 20px 18px; }
   .card:hover { transform: none; }
 
   .promo { flex-direction: column; align-items: flex-start; }
