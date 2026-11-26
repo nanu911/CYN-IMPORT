@@ -2,7 +2,7 @@
 // Editá solo este archivo para cambiar tus datos.
 window.SITE = {
   name: "CYN IMPORT",
-  tagline: "Productos importados de calidad con garantía y envíos a todo el país. Elegí lo que te guste y escribinos por WhatsApp.",
+  tagline: "Productos importados de calidad. Envíos por zona o retiro en nuestro domicilio. Elegí lo que te guste y escribinos por WhatsApp.",
 
   // Número con código de país y sin "+" ni espacios. Argentina: 549 + código de área + número.
   // Ejemplo: 5491122334455
@@ -15,24 +15,25 @@ window.SITE = {
   mensaje: "Hola! Me interesa este producto: {producto} ({precio}). ¿Está disponible?",
 
   // Barra superior (dejala vacía "" para ocultarla)
-  barra: "🚚 Envíos x la zona · 💳 Consultá cuotas · 🛡️ Garantía en todos los productos",
+  barra: "🚚 Envíos por zona con costo adicional · 🏠 Retiro en domicilio · 💵 Efectivo o transferencia",
 
-  // Cartel "3 cuotas de $X sin interés" en cada producto. Poné 0 para ocultarlo.
-  cuotas: 3,
+  // Recargo (%) al pagar por transferencia. Se muestra en el detalle del producto.
+  // Si lo cambiás, actualizá también la pregunta de medios de pago.
+  recargoTransferencia: 3,
 
-  // Los 4 recuadros debajo del título principal
+  // Los recuadros debajo del título principal
   beneficios: [
-    { icono: "🚚", titulo: "Envíos a todo el país", detalle: "Coordinamos por WhatsApp" },
-    { icono: "🛡️", titulo: "Garantía", detalle: "Cambios y devoluciones" },
+    { icono: "🚚", titulo: "Envíos por zona", detalle: "Con un costo mínimo adicional" },
+    { icono: "🏠", titulo: "Retiro en domicilio", detalle: "Coordinamos por WhatsApp" },
+    { icono: "💵", titulo: "Formas de pago", detalle: "Efectivo o transferencia (+3%)" },
   ],
 
   // Preguntas frecuentes (agregá, quitá o cambiá las que quieras)
   faq: [
-    { p: "¿Cómo compro?", r: "Elegí tu producto, tocá \"Consultar por WhatsApp\" y te respondemos para coordinar pago y envío." },
-    { p: "¿Cuánto tarda el envío?", r: "En AMBA entre 2 y 4 días hábiles; al interior del país entre 4 y 8 días hábiles, según la localidad." },
-    { p: "¿Los productos tienen garantía?", r: "Sí. Todos cuentan con garantía por defectos de fábrica. Escribinos por WhatsApp con los datos de tu compra." },
-    { p: "¿Qué medios de pago aceptan?", r: "Tarjetas de crédito y débito, transferencia bancaria y efectivo. Los detalles te los pasamos por WhatsApp." },
-    { p: "¿Puedo retirar mi compra?", r: "Sí, coordinamos el punto de retiro por WhatsApp." }
+    { p: "¿Cómo compro?", r: "Tocá \"Ver detalles\" para conocer el producto y después \"Consultar por WhatsApp\" para coordinar la entrega y el pago." },
+    { p: "¿Hacen envíos?", r: "Solo hacemos envíos por zona, con un costo mínimo adicional. Escribinos para saber si llegamos a la tuya y cuánto sale." },
+    { p: "¿Puedo retirar mi compra?", r: "Sí, podés retirarla por nuestro domicilio. Coordinamos día y horario por WhatsApp." },
+    { p: "¿Qué medios de pago aceptan?", r: "Efectivo o transferencia bancaria. Pagando por transferencia se aplica un 3% de recargo." }
   ],
 
   // Texto del banner naranja de ofertas
