@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CYN IMPORT - Productos importados</title>
-  <meta name="description" content="CYN IMPORT: productos importados con envío a todo el país y garantía. Consultá por WhatsApp.">
+  <meta name="description" content="CYN IMPORT: productos importados. Envíos por zona o retiro en domicilio. Consultá por WhatsApp.">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -114,13 +114,19 @@
 
   <footer class="footer">
     <div class="container footer-grid">
-      <div><div class="logo"><span>CYN</span> IMPORT</div><p>Productos importados de calidad, directo a tu casa. Garantía y atención personalizada.</p></div>
+      <div><div class="logo"><span>CYN</span> IMPORT</div><p>Productos importados de calidad. Envíos por zona o retiro en domicilio, con atención personalizada.</p></div>
       <div><h4>Tienda</h4><a href="#productos">Todos los productos</a><a href="#ofertas">Ofertas</a></div>
       <div><h4>Ayuda</h4><a href="#faq">Preguntas frecuentes</a><a id="wa-footer" target="_blank" rel="noopener">WhatsApp</a><a href="#contacto">Contacto</a></div>
     </div>
     <div class="copy">© <span id="year"></span> <span id="site-name"></span>. Todos los derechos reservados.</div>
   </footer>
   <a class="wa-float" id="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <!-- Detalle de producto -->
+  <dialog class="detail" id="detail" aria-labelledby="detail-name">
+    <button type="button" class="detail-close" id="detail-close" aria-label="Cerrar">✕</button>
+    <div class="detail-body" id="detail-body"></div>
+  </dialog>
 
   <script src="config.js"></script>
   <script src="js/shared.js"></script>
