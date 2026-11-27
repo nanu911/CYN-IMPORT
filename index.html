@@ -21,7 +21,7 @@
 
   <header class="header">
     <div class="container header-in">
-      <a class="logo" href="#inicio"><img class="logo-img" src="img/logo.png" alt="" width="44" height="44"><span>CYN</span> IMPORT</a>
+      <a class="logo" href="#inicio"><img class="logo-img" onerror="this.remove()" src="img/logo.png" alt="" width="44" height="44"><span>CYN</span> IMPORT</a>
       <form class="search" id="search-form">
         <input type="search" id="q" placeholder="Buscar productos..." aria-label="Buscar productos">
         <button aria-label="Buscar" type="submit"><i class="fa-solid fa-magnifying-glass ic" aria-hidden="true"></i></button>
@@ -29,6 +29,7 @@
       <nav class="nav" id="nav">
         <a href="#inicio">Inicio</a>
         <a href="#productos">Productos</a>
+        <a href="#ofertas">Ofertas</a>
         <a href="#faq">Ayuda</a>
         <a href="#contacto" class="btn btn-small">Contacto</a>
       </nav>
@@ -39,11 +40,13 @@
   <section class="hero" id="inicio">
     <div class="container hero-in">
       <div>
-        <img class="hero-logo" src="img/logo.png" alt="CYN IMPORT - Minorista y mayorista" width="132" height="132">
+        <img class="hero-logo" onerror="this.remove()" src="img/logo.png" alt="CYN IMPORT - Minorista y mayorista" width="132" height="132">
         <h1>Lo mejor del mundo, <em>directo a tu casa</em></h1>
         <p id="tagline"></p>
         <div class="hero-cta">
           <a class="btn btn-accent" href="#productos">Ver productos</a>
+          <a class="btn btn-outline" href="#ofertas">Ofertas de la semana</a>
+        </div>
       </div>
       <div class="hero-art" id="hero-art" aria-hidden="true"></div>
     </div>
@@ -121,7 +124,7 @@
 
   <footer class="footer">
     <div class="container footer-grid">
-      <div><div class="logo"><img class="logo-img" src="img/logo.png" alt="" width="48" height="48"><span>CYN</span> IMPORT</div><p>Productos importados de calidad. Envíos por zona o retiro en domicilio, con atención personalizada.</p></div>
+      <div><div class="logo"><img class="logo-img" onerror="this.remove()" src="img/logo.png" alt="" width="48" height="48"><span>CYN</span> IMPORT</div><p>Productos importados de calidad. Envíos por zona o retiro en domicilio, con atención personalizada.</p></div>
       <div><h4>Tienda</h4><a href="#productos">Todos los productos</a><a href="#ofertas">Ofertas</a></div>
       <div><h4>Ayuda</h4><a href="#faq">Preguntas frecuentes</a><a id="wa-footer" target="_blank" rel="noopener">WhatsApp</a><a href="#contacto">Contacto</a></div>
     </div>
