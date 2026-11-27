@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CYN IMPORT - Productos importados</title>
   <meta name="description" content="CYN IMPORT: productos importados. Envíos por zona o retiro en domicilio. Consultá por WhatsApp.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -15,16 +16,15 @@
       <a class="logo" href="#inicio"><span>CYN</span> IMPORT</a>
       <form class="search" id="search-form">
         <input type="search" id="q" placeholder="Buscar productos..." aria-label="Buscar productos">
-        <button aria-label="Buscar" type="submit">🔍</button>
+        <button aria-label="Buscar" type="submit"><i class="fa-solid fa-magnifying-glass ic" aria-hidden="true"></i></button>
       </form>
       <nav class="nav" id="nav">
         <a href="#inicio">Inicio</a>
         <a href="#productos">Productos</a>
-        <a href="#ofertas">Ofertas</a>
         <a href="#faq">Ayuda</a>
         <a href="#contacto" class="btn btn-small">Contacto</a>
       </nav>
-      <button class="burger" id="burger" aria-label="Menú">☰</button>
+      <button class="burger" id="burger" aria-label="Menú"><i class="fa-solid fa-bars ic" aria-hidden="true"></i></button>
     </div>
   </header>
 
@@ -35,7 +35,6 @@
         <p id="tagline"></p>
         <div class="hero-cta">
           <a class="btn btn-accent" href="#productos">Ver productos</a>
-          <a class="btn btn-outline" href="#ofertas">Ofertas de la semana</a>
         </div>
       </div>
       <div class="hero-art" id="hero-art" aria-hidden="true"></div>
@@ -53,7 +52,7 @@
 
   <section class="section" id="sec-featured" style="padding-top:0" hidden>
     <div class="container">
-      <div class="section-title"><h2>⭐ Productos destacados</h2><a href="#productos">Ver todos →</a></div>
+      <div class="section-title"><h2><i class="fa-solid fa-star ic" aria-hidden="true"></i>Productos destacados</h2><a href="#productos">Ver todos →</a></div>
       <div class="grid" id="featured"></div>
     </div>
   </section>
@@ -106,7 +105,7 @@
           <ul id="contact-list"></ul>
         </div>
         <div style="display:grid;place-items:center">
-          <a class="btn btn-wa-big" id="wa-contact" target="_blank" rel="noopener">💬 Escribinos por WhatsApp</a>
+          <a class="btn btn-wa-big" id="wa-contact" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp ic" aria-hidden="true"></i> Escribinos por WhatsApp</a>
         </div>
       </div>
     </div>
@@ -120,16 +119,17 @@
     </div>
     <div class="copy">© <span id="year"></span> <span id="site-name"></span>. Todos los derechos reservados.</div>
   </footer>
-  <a class="wa-float" id="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a class="wa-float" id="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp ic" aria-hidden="true"></i></a>
 
   <!-- Detalle de producto -->
   <dialog class="detail" id="detail" aria-labelledby="detail-name">
-    <button type="button" class="detail-close" id="detail-close" aria-label="Cerrar">✕</button>
+    <button type="button" class="detail-close" id="detail-close" aria-label="Cerrar"><i class="fa-solid fa-xmark ic" aria-hidden="true"></i></button>
     <div class="detail-body" id="detail-body"></div>
   </dialog>
 
   <script src="config.js"></script>
   <script src="js/shared.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/icons.js"></script>
 </body>
 </html>
