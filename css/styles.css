@@ -797,6 +797,8 @@ html.modal-open, html.modal-open body { overflow: hidden; }
 
   .cats {
     display: flex;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     gap: 10px;
     padding-bottom: 8px;
@@ -806,8 +808,8 @@ html.modal-open, html.modal-open body { overflow: hidden; }
   .cats::-webkit-scrollbar { display: none; }
   .cat-box { min-width: 120px; flex-shrink: 0; scroll-snap-align: start; padding: 14px 10px; }
 
-  .toolbar { flex-direction: column; align-items: stretch; }
-  #chips { overflow-x: auto; flex-wrap: nowrap !important; padding-bottom: 4px; }
+  .toolbar { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
+  #chips { overflow-x: auto; flex-wrap: nowrap !important; padding-bottom: 4px; min-width: 0; max-width: 100%; width: 100%; }
   #chips::-webkit-scrollbar { display: none; }
   .chip { white-space: nowrap; }
   #sort { width: 100%; }
