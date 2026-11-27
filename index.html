@@ -7,6 +7,7 @@
   <meta name="description" content="CYN IMPORT: productos importados. Envíos por zona o retiro en domicilio. Consultá por WhatsApp.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <meta name="theme-color" content="#0b1b33">
+  <script>try{if(localStorage.getItem("cyn-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
   <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -14,7 +15,7 @@
   <meta property="og:title" content="CYN IMPORT - Productos importados">
   <meta property="og:description" content="Minorista y mayorista en Berazategui. Envíos por zona o retiro en domicilio. Consultá por WhatsApp.">
   <meta property="og:image" content="https://nanu911.github.io/CYN-IMPORT/img/og-logo.jpg">
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=6">
 </head>
 <body>
   <div class="topbar" id="topbar"></div>
@@ -32,6 +33,7 @@
         <a href="#faq">Ayuda</a>
         <a href="#contacto" class="btn btn-small">Contacto</a>
       </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar a tema oscuro" title="Tema claro / oscuro"><i class="fa-solid fa-moon ic" aria-hidden="true"></i></button>
       <button class="burger" id="burger" aria-label="Menú"><i class="fa-solid fa-bars ic" aria-hidden="true"></i></button>
     </div>
   </header>
@@ -70,10 +72,17 @@
     <div class="container">
       <div class="promo">
         <div><h2 id="promo-title"></h2><p id="promo-text"></p></div>
+        <a class="btn btn-primary" href="#ofertas">Ver ofertas</a>
       </div>
     </div>
   </section>
 
+  <section class="section" id="ofertas" style="padding-top:0" hidden>
+    <div class="container">
+      <div class="section-title"><h2>Mayores descuentos</h2></div>
+      <div class="grid" id="offers"></div>
+    </div>
+  </section>
 
   <section class="section" id="productos" style="padding-top:20px">
     <div class="container">
@@ -132,6 +141,7 @@
   <script src="config.js"></script>
   <script src="js/shared.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/icons.js?v=4"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/theme.js?v=6"></script>
 </body>
 </html>
